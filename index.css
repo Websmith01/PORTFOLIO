@@ -784,6 +784,11 @@ transition:0.5s;
     .main .flex h3 {
         font-size: 20px;
     }
+    .pxp{
+    position: relative;
+    right: 15px;
+
+}
     /* SKILLS - Mobile */
     .heading3 {
         flex-direction: column;   /* stack heading + cards vertically */
@@ -1272,7 +1277,11 @@ transition:0.5s;
         position: relative;
         left: 10px;
     }
+.pxp{
+    position: relative;
+    right: 15px;
 
+}
 /* ----------------Skills - Mobile ----------------- */
 .heading3 {
     flex-direction: column !important;   /* stack heading + cards vertically */
