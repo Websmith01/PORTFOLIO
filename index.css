@@ -230,35 +230,7 @@ body{
     font-size: 20px;
    font-weight: 500;
 }
-/* .main {
-  background:black;
-  margin-bottom: 200px;
-  position: relative; 
-  right: 120px;
-} */
 
-.flex h3 div{
-    transition: all 0.3s;
-    background: linear-gradient(to left, rgb(69, 204, 238),rgb(40, 0, 77));
-}
-.flex{
-    cursor: pointer;
-   
-}
-
-.flex h3:hover div{
-    width: 100%;
-    
-}
-#edu,#ski,#exp{
-    transition: all 0.3s;
-}
-.pi{
-    color: rgba(0, 0, 0, 0.9);
-}
-#frame{
-    transition: all 0.3s;
-}
 /* ----------------Skills----------------- */
 .heading3{
     width: 95%;
@@ -442,7 +414,7 @@ body{
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  border: 5px solid transparent;
+  border: 2px solid transparent;
   border-radius: 10px;
   box-shadow: 0 0 0px #0a1a3f;
   transition: box-shadow 0.5s ease, border-color 0.5s ease;
@@ -618,46 +590,49 @@ transition:0.5s;
 }
 /* ---------------- MEDIA QUERY---------------- */
 /* ---------NAVIGATION BAR--------- */
-@media screen and (min-width:200px) and (max-width:900px){
-      .navbtn {
+@media screen and (min-width: 200px) and (max-width: 900px) {
+    .nav {
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    .navbtn {
+        /* don’t use display:none here */
+        display: flex;
         flex-direction: column;
         align-items: center;
-        position: absolute;
-        top: 50px; 
-        left: 0;
+        justify-content: center;
         width: 100%;
-        background-color: #ffffff; 
-        overflow: hidden;       /* needed for smooth height animation */
-        max-height: 0;          /* start closed */
-        transition: max-height 0.4s ease; /* smooth opening */
+        gap: 20px;
+        background: white;
+        position: absolute;
+        max-height: 0;          /* collapsed */
+        overflow: hidden;       /* hide content */
+        opacity: 0;
+        transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+        top: 50px;
+        left: 0;
         z-index: 100;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
     .navbtn.active {
-        max-height: 500px; /* adjust if more links, smooth slide down */
+        max-height: 500px;   /* expand */
+        opacity: 1;
     }
 
+    .nbtn {
+        margin-left: 0;
+    }
     .nbtn a {
-        color: #191970; 
+        color: #191970;
         text-decoration: none;
         font-weight: bold;
-        display: block;
-        padding: 10px 0;
-    }
-
-    .nbtn a:hover {
-        color: rgb(54,54,171);
     }
 
     .sand {
         display: block;
-        font-size: 28px;
-        position: relative;
-        bottom: 10px;
         cursor: pointer;
-        line-height: 50px; /* vertically center */
-        color: rgb(54,54,171);
+        color: #191970;
     }
 }
 
@@ -772,22 +747,6 @@ transition:0.5s;
         font-size: 16px;
         padding: 0 10px;
     }
-/* Skill / Education / Experience */
-     .w-\[400px\]{
-        width: 400px;
-    }
-     .main {
-        justify-self: center;
-        position: relative;
-        left: 10px;
-    }
-    .main .flex h3 {
-        font-size: 20px;
-    }
-    .pxp{
-    position: relative;
-    right: 15px;
-
 }
     /* SKILLS - Mobile */
     .heading3 {
@@ -871,6 +830,7 @@ transition:0.5s;
         flex-direction: column;
         align-items: center;
         gap: 15px;
+        transition: none !important; /* disable transition */
         padding: 20px 0 !important;
     }
 
@@ -881,7 +841,7 @@ transition:0.5s;
         border-radius: 10px;
         text-align: center;
         margin: 10px 0 !important;
-        box-shadow: 0px 0px 10px -5px black; /* softer shadow for mobile */
+        /* box-shadow: 0px 0px 10px -5px black; softer shadow for mobile */
         transition: none !important; /* disable transition */
     }
 
@@ -892,15 +852,19 @@ transition:0.5s;
     }
     .ss2 {
         background: linear-gradient(to bottom, rgb(69, 204, 238), rgb(40, 0, 77)) !important;
-        transform: none ;
+        transform: none  !important;
        
     }
     .ss3 {
         background: linear-gradient(to top right, rgb(69, 204, 238), rgb(40, 0, 77)) ;
-        transform: none ;
+        transform: none  !important ;
         
     }
-
+    .sbox:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        background: linear-gradient(to top right, rgb(69, 204, 238), rgb(40, 0, 77))!important; 
+    }
     .sbox h3 {
         font-size: 18px ;
         margin-bottom: 10px;
@@ -978,8 +942,7 @@ transition:0.5s;
         margin-top: 5px;
         font-size: 14px;
     }
-
-}
+ 
 /* ----------------Tablet size Screens (601px–1024px) ---------------- */
 @media screen and (min-width:601px) and (max-width:1024px) {
     /* ---------HOME-------------- */
@@ -1057,16 +1020,6 @@ transition:0.5s;
     .abt-text {
         font-size: 18px;
     }
-
-  /* - Skills/Education/Experience - */
-     .w-\[400px\]{
-        width: 400px;
-    }
-     .main {
-        justify-self: center;
-        position: relative;
-        left: 12px;
-    }
  /*------------------- Skills Section------------------ */
     .heading3 {
         padding: 60px 20px;
@@ -1132,7 +1085,11 @@ transition:0.5s;
         
         box-shadow: none;
     }
-
+    .sbox:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        background: linear-gradient(to top right, rgb(69, 204, 238), rgb(40, 0, 77));
+    }
     .serve h1 {
         font-size: 32px;
     }
@@ -1268,20 +1225,7 @@ transition:0.5s;
         line-height: 1.5;
     }
 
-    /* Skill/Education/Experience tabs */
-   .w-\[400px\]{ 
-        font-size: medium;
-    }
-     .main {
-        justify-self: center;
-        position: relative;
-        left: 10px;
-    }
-.pxp{
-    position: relative;
-    right: 35px;
 
-}
 /* ----------------Skills - Mobile ----------------- */
 .heading3 {
     flex-direction: column !important;   /* stack heading + cards vertically */
@@ -1396,6 +1340,11 @@ transition:0.5s;
 .sbox.ss3 {
     background: linear-gradient(to top right,rgb(69, 204, 238),rgb(40, 0, 77));
 }
+    .sbox:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        background: linear-gradient(to top right, rgb(69, 204, 238), rgb(40, 0, 77));
+    }
 /* ----------------Contact - Mobile----------------- */
 .heading5 {
     padding: 40px 10px;
